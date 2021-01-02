@@ -21,7 +21,11 @@ const Header = () => {
           </LinkContainer>
           <Navbar.Toggle aria-controls="basic-navbar-nav" />
           <Navbar.Collapse id="basic-navbar-nav">
-            <Route render={({ history }) => <SearchBox history={history} />} />
+            <Route
+              render={({ history }) => (
+                <SearchBox className="d-none d-lg-block" history={history} />
+              )}
+            />
 
             <Nav className="ml-auto">
               <LinkContainer to="/cart">
@@ -62,6 +66,11 @@ const Header = () => {
           </Navbar.Collapse>
         </Container>
       </Navbar>
+      <Route
+        render={({ history }) => (
+          <SearchBox className="d-lg-none container mt-2" history={history} />
+        )}
+      />
     </header>
   );
 };
