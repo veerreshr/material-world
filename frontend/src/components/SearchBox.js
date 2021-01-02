@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Form, Button } from "react-bootstrap";
+import { Form } from "react-bootstrap";
 
 const SearchBox = ({ history, className }) => {
   const [keyword, setKeyword] = useState("");
@@ -15,7 +15,7 @@ const SearchBox = ({ history, className }) => {
 
   return (
     <Form onSubmit={submitHandler} inline className={className}>
-      <div className="input-group w-100 ">
+      <div className="input-group w-100   ">
         <Form.Control
           type="text"
           name="q"
@@ -23,7 +23,11 @@ const SearchBox = ({ history, className }) => {
           placeholder="Search Products..."
         ></Form.Control>
         <div className="input-group-append">
-          <span className="input-group-text  lighten-3" id="basic-text1">
+          <span
+            className="input-group-text  lighten-3"
+            id="basic-text1"
+            onClick={submitHandler}
+          >
             <i className="fas fa-search text-grey" aria-hidden="true"></i>
           </span>
         </div>
