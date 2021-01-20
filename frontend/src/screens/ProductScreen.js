@@ -19,11 +19,14 @@ import {
 } from "../actions/productActions";
 import { PRODUCT_CREATE_REVIEW_RESET } from "./../constants/productConstants";
 import Meta from "../components/Meta";
+import ToastComponent from "../components/ToastComponent";
 
 const ProductScreen = ({ history, match }) => {
   const [qty, setQty] = useState(1);
   const [rating, setRating] = useState(0);
   const [comment, setComment] = useState("");
+  const [show, setShow] = useState(false);
+
   const dispatch = useDispatch();
   const productDetails = useSelector((state) => state.productDetails);
   const { loading, error, product } = productDetails;
@@ -39,7 +42,7 @@ const ProductScreen = ({ history, match }) => {
 
   useEffect(() => {
     if (successProductReview) {
-      alert("Review Submitted!");
+      setShow(true);
       setRating(0);
       setComment("");
       dispatch({ type: PRODUCT_CREATE_REVIEW_RESET });
@@ -63,6 +66,12 @@ const ProductScreen = ({ history, match }) => {
 
   return (
     <>
+      <ToastComponent
+        title="Review Submitted"
+        message="Thanks for submitting your review"
+        show={show}
+        setShow={setShow}
+      />
       <Link className="btn btn-light my-3" to="/">
         Go Back
       </Link>
