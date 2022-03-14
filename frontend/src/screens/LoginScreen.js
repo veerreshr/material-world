@@ -28,6 +28,10 @@ const LoginScreen = ({ location, history }) => {
     e.preventDefault();
     dispatch(login(email, password));
   };
+  const testLogin = (e) => {
+    e.preventDefault();
+    dispatch(login("tester@test.com", "test"));
+  };
   return (
     <FormContainer>
       <h1>Sign In</h1>
@@ -58,7 +62,10 @@ const LoginScreen = ({ location, history }) => {
           Sign In
         </Button>
       </Form>
-
+      <br />
+      <a href="#" onClick={testLogin}>
+        Test Sign In ?
+      </a>
       <Row className="py-3">
         <Col>
           New Customer?{" "}
